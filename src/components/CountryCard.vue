@@ -1,6 +1,6 @@
 <template>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="card">
+        <div class="card" @click="getCountryDetails">
             <img :src="country.flags.png" alt="Flag" class="img-fluid">
             <div class="card--content">
                 <p><strong>Name</strong>: {{ country.name.common }}</p>
@@ -16,7 +16,14 @@
 export default {
     props: {
         country: Object,
+        getDetails: Function
     },
+    methods: {
+  getCountryDetails() {
+    // Chame a função getDetails passando o país como argumento
+    this.getDetails(this.country);
+  },
+},
 };
 
 </script>
