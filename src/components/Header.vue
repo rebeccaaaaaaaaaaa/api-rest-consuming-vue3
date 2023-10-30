@@ -15,7 +15,6 @@ import ToggleDarkMode from './ToggleDarkMode.vue'
   
 <style scoped>
 .header {
-  background-color: #fff;
   padding: 1rem;
   box-shadow: 0px 3px 6px #00000016;
 }

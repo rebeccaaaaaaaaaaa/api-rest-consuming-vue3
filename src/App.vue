@@ -1,6 +1,5 @@
 <template>
   <CountryList />
-  <RouterView></RouterView>
 </template>
 
 <script setup>

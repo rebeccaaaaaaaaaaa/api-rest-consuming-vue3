@@ -1,6 +1,6 @@
 <template>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-        <div class="card" @click="getCountryDetails">
+        <div class="card">
             <img :src="country.flags.png" alt="Flag" class="img-fluid">
             <div class="card--content">
                 <p><strong>Name</strong>: {{ country.name.common }}</p>
@@ -9,6 +9,7 @@
                 <p><strong>Region: </strong> {{ country.continents[0] }}</p>
             </div>
         </div>
+
     </div>
 </template>
   
@@ -16,14 +17,7 @@
 export default {
     props: {
         country: Object,
-        getDetails: Function
     },
-    methods: {
-  getCountryDetails() {
-    // Chame a função getDetails passando o país como argumento
-    this.getDetails(this.country);
-  },
-},
 };
 
 </script>
