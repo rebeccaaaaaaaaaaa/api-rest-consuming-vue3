@@ -5,7 +5,7 @@ In this application, you can filter the list of countries by region and search f
 
 # Screenshot
 
-<img src="" alt="" />
+<img src="https://raw.githubusercontent.com/rebeccaaaaaaaaaaa/api-rest-consuming-vue3/main/src/assets/preview.png" alt="preview" />
 
 # Demo
 
