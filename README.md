@@ -15,5 +15,6 @@ In this application, you can filter the list of countries by region and search f
 
 - git clone 'repository here without '' '
 - cd 'repository folder'
+- npm install
 - npm run dev
 
