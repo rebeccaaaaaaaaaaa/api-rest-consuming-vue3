@@ -1,7 +1,19 @@
-# Vue 3 + Vite
+# Countries RESTApi Consuming with vue3
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+- Application based on a template layout by Frontend Mentor, which consists of displaying all countries and viewing details about them.
+In this application, you can filter the list of countries by region and search for a country by name. 
 
-## Recommended IDE Setup
+# Screenshot
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<img src="" alt="" />
+
+# Demo
+
+<a href="" target="_blank"> See the application </a>
+
+# Installation
+
+- git clone 'repository here without '' '
+- cd 'repository folder'
+- npm run dev
+
