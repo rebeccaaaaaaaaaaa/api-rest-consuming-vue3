@@ -5,7 +5,7 @@
 </template>
   
 <script setup>
-import { computed, watch, ref } from 'vue';
+import { computed, watch, ref, onMounted } from 'vue';
 
 const darkMode = ref(false)
 
@@ -15,7 +15,24 @@ const darkModeIcon = computed(() => (darkMode.value ? '🌞' : '🌙'));
 
 const toggleDarkMode = () => {
     darkMode.value = !darkMode.value; // Alternar entre modo escuro e modo claro
+    saveDarkModePreference()
 };
+
+// Funções para salvar e recuperar a preferência do tema no Local Storage
+const saveDarkModePreference = () => {
+    localStorage.setItem('darkMode', darkMode.value.toString());
+};
+
+const loadDarkModePreference = () => {
+    const savedDarkMode = localStorage.getItem('darkMode');
+    if (savedDarkMode !== null) {
+        darkMode.value = savedDarkMode === 'true';
+    }
+};
+
+onMounted(() => {
+    loadDarkModePreference(); // Carregar a preferência do tema ao montar o componente
+});
 
 watch(darkMode, (newMode) => {
     // Aplicar o estilo com base no modo selecionado

@@ -1,55 +1,51 @@
 <template>
     <Header />
-    <div class="container">
-        <div class="search-area">
-            <input type="text" placeholder="🔍 Search for a country..." v-model="searchCountry" />
-            <select name="" v-model="selectedRegion" @change="handleRegionChange">
-                <option value="">All</option>
-                <option :value="item" v-for="item in regions" :key="item">{{ item }}</option>
-            </select>
-        </div>
-        <div class="countries">
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" v-for="(item, index) in countries" :key="index"
-                    @click="handleShowDetailsSection(item, index)">
-                    <div class="card">
-                        <img :src="item.flags.png" alt="Flag" class="img-fluid">
-                        <div class="card--content">
-                            <p><strong>Name</strong>: {{ item.name.common }}</p>
-                            <p><strong>Population: </strong> {{ item.population }}</p>
-                            <p><strong>Area: </strong> {{ item.area }} m²</p>
-                            <p><strong>Region: </strong> {{ item.continents[0] }}</p>
+    <main>
+        <section class="container">
+            <div class="search-area">
+                <input type="text" placeholder="🔍 Search for a country..." v-model="searchCountry" />
+                <select name="" v-model="selectedRegion" @change="handleRegionChange">
+                    <option value="">All</option>
+                    <option :value="item" v-for="item in regions" :key="item">{{ item }}</option>
+                </select>
+            </div>
+            <div class="countries">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" v-for="(item, index) in countries" :key="index"
+                        @click="handleShowDetailsSection(item, index)">
+                        <CountryCard :country="item" />
+                        <div class="modal" v-if="selectedItem === item">
+                            <div class="modal-content">
+                                <button class="btClose"> X</button>
+                                <img :src="item.flags.png" alt="Flag" class="img-fluid">
+                                <p><strong>FIFA: </strong>: {{ item.fifa }} </p>
+                                <p><strong> Flag: </strong> {{ item.flag }}</p>
+                                <p><strong>Start Of Week: </strong>{{ item.startOfWeek }}</p>
+                                <p><strong>Capital: </strong> {{ item.capital[0] }}</p>
+                                <p><strong>Population: </strong> {{ item.population }}</p>
+                                <p><strong>Area: </strong> {{ item.area }} m²</p>
+                                <p><strong>Region: </strong> {{ item.continents[0] }}</p>
+                                <p><strong>Population: </strong> {{ item.population }}</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="modal" v-if="selectedItem === item">
-                        <div class="modal-content">
-                            <img :src="item.flags.png" alt="Flag" class="img-fluid">
-                            <p><strong>Name</strong>: {{ item.name.common }}</p>
-                            <p><strong>Population: </strong> {{ item.population }}</p>
-                            <p><strong>Area: </strong> {{ item.area }} m²</p>
-                            <p><strong>Region: </strong> {{ item.continents[0] }}</p>
-                            <p><strong>Capital: </strong>{{ item.capital[0] }}</p>
-                        </div>
-                    </div>
-
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script setup>
 import Header from '../components/Header.vue';
 import CountryCard from '../components/CountryCard.vue';
 
-import { onMounted, computed, ref, watch } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 const selectedRegion = ref(''); // Inicialmente, nada selecionado
 const searchCountry = ref(''); // Inicialmente, a busca está vazia
-const showDetailsSection = ref(false)
 const selectedItem = ref(null); // Inicialmente, nenhum item selecionado
 
 const countries = computed(() => {
@@ -87,6 +83,15 @@ const handleShowDetailsSection = (item) => {
 
 <style scoped>
 /* Estilo para o modal */
+
+.btClose {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
 .modal {
     display: block;
     position: fixed;
@@ -101,6 +106,10 @@ const handleShowDetailsSection = (item) => {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dark-mode .modal-content {
+    background-color: #333;
 }
 
 .modal-content {
